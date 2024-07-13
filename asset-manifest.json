@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/KargoKarakol/static/css/main.b1bb4a63.css",
-    "main.js": "/KargoKarakol/static/js/main.a70dc41d.js",
+    "main.js": "/KargoKarakol/static/js/main.09847b81.js",
     "static/media/bgc2Auth.jpg": "/KargoKarakol/static/media/bgc2Auth.56290e6b415bb2a5dd1e.jpg",
     "index.html": "/KargoKarakol/index.html",
     "main.b1bb4a63.css.map": "/KargoKarakol/static/css/main.b1bb4a63.css.map",
-    "main.a70dc41d.js.map": "/KargoKarakol/static/js/main.a70dc41d.js.map"
+    "main.09847b81.js.map": "/KargoKarakol/static/js/main.09847b81.js.map"
   },
   "entrypoints": [
     "static/css/main.b1bb4a63.css",
-    "static/js/main.a70dc41d.js"
+    "static/js/main.09847b81.js"
   ]
 }

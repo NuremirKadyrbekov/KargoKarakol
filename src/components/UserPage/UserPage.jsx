@@ -4,21 +4,20 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 
 function UserPage() {
   const [products, setProducts] = useState([]);
+    useEffect(() => {
+      const fetchProducts = async () => {
+        if (auth.currentUser) {
+          const q = query(collection(db, 'products'), where('userId', '==', auth.currentUser.uid));
+          const querySnapshot = await getDocs(q);
+          const productsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+          setProducts(productsList);
+        }
+      };
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (auth.currentUser) {
-        const q = query(collection(db, 'products'), where('userId', '==', auth.currentUser.uid));
-        const querySnapshot = await getDocs(q);
-        const productsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setProducts(productsList);
-      }
-    };
+      fetchProducts();
+    }, [auth.currentUser]);
 
-    fetchProducts();
-  }, [auth.currentUser]);
-  
-  console.log(products)
+
 
   return (
     <div>
@@ -28,6 +27,7 @@ function UserPage() {
           <li key={product.id}>{product.name}</li>
         ))}
       </ul>
+      <button > Upgrade</button>
     </div>
   );
 }

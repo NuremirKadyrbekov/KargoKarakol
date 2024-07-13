@@ -28,15 +28,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Home />
-            </ProtectedRoute>
-          }
-        />
+        <Route path="/KargoKarakol" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
         <Route
           path="/Home"
           element={

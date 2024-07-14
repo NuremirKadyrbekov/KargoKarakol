@@ -35,7 +35,7 @@ function Auth({ setIsAuthenticated }) {
       if (isAdmin) {
         navigate('/admin');
       } else {
-        navigate('/UserPage');
+        navigate('/home');
       }
     } catch (error) {
       console.log(error);

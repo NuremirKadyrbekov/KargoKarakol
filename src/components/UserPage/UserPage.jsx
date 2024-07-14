@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '../../firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
+import Css from './UserPage.module.css';
 
 function UserPage() {
   const [products, setProducts] = useState([]);
-    useEffect(() => {
-      const fetchProducts = async () => {
-        if (auth.currentUser) {
-          const q = query(collection(db, 'products'), where('userId', '==', auth.currentUser.uid));
-          const querySnapshot = await getDocs(q);
-          const productsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-          setProducts(productsList);
-        }
-      };
+  const [loading, setLoading] = useState(true);
 
-      fetchProducts();
-    }, [auth.currentUser]);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const q = query(collection(db, 'products'), where('userId', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+        const productsList = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setProducts(productsList);
+      } else {
+        setProducts([]);
+      }
+      setLoading(false);
+    });
 
+    return () => unsubscribe();
+  }, []);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -27,7 +36,7 @@ function UserPage() {
           <li key={product.id}>{product.name}</li>
         ))}
       </ul>
-      <button > Upgrade</button>
+      <button>Upgrade</button>
     </div>
   );
 }

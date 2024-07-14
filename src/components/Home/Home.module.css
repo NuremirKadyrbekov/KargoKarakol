@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik+Mono+One&family=Unbounded:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Bubbles&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik+Bubbles&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.HeaderCap {
+    height: 40px;
+    width: 100%;
+    background-color: rgb(34, 35, 44);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 200;
+    font-size: 12px;
+}
+
+.HeaderCapContact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.SocialIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+
+.HeaderNavBar {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.Logo {
+    width: 150px;
+    height: auto;
+}
+
+.HeaderNavBar ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.HeaderNavBar ul li {
+    font-family: "Unbounded", sans-serif;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    transition: color 300ms;
+}
+
+.HeaderNavBar ul li:hover {
+    cursor: pointer;
+    color: rgb(255, 2, 116);
+}
+
+.Basket {
+    font-size: 20px;
+    transition: color 300ms;
+}
+
+.Basket:hover {
+    cursor: pointer;
+    color: rgb(255, 2, 116);
+}
+
+.Header {
+    background-image: url(../../assets/bgcHeader.png);
+    width: 100%;
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.581);
+}
+
+.Title {
+    margin-top: 100px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+    
+}
+
+.Title1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+
+}
+.Title1 h1{
+    font-family: "Unbounded", sans-serif;
+    font-weight: 200;
+    font-size: 15px;
+}
+
+.Linear {
+    width: 50px;
+    border-top: 1px solid white;
+}
+
+.Title2 h1 {
+    font-size: 40px;
+    margin-top: 20px;
+    font-weight: 400;
+    font-family: "Unbounded", sans-serif;
+}
+
+.Description {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    
+}
+
+.Description p {
+    font-size: 10px;
+    font-weight: 100;
+    font-family: "Unbounded", sans-serif;
+
+}
+
+.Buttons {
+    margin-top: 60px;
+    display: flex;
+    gap: 10px;
+    z-index: 1;
+}
+
+.Buttons button {
+    width: 150px;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    font-family: "Unbounded", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.Btn1 {
+    background-color: rgb(255, 2, 32);
+    color: white;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 2, 32);
+    transition: background-color 300ms, border 300ms;
+}
+
+.Btn2 {
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid white;
+    transition: background-color 300ms, border 300ms;
+}
+
+.Btn1:hover {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.Btn2:hover {
+    background-color: rgb(255, 2, 32);
+    border: 1px solid rgb(255, 2, 32);
+}
+
+@media (min-width: 576px) {
+    .HeaderCapContact,
+    .SocialIcons {
+        gap: 20px;
+    }
+
+    .HeaderNavBar ul {
+        gap: 30px;
+    }
+
+    .Basket {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 768px) {
+    .Header {
+        height: 70vh;
+    }
+
+    .Title1 {
+        font-size: 16px;
+    }
+
+    .Title2 h1 {
+        font-size: 48px;
+    }
+
+    .Description p {
+        font-size: 16px;
+    }
+
+    .Buttons button {
+        width: 180px;
+        height: 45px;
+    }
+}
+
+@media (min-width: 992px) {
+    .Header {
+        height: 80vh;
+    }
+
+    .Title2 h1 {
+        font-size: 56px;
+    }
+
+    .Description p {
+        font-size: 18px;
+    }
+
+    .Buttons button {
+        width: 200px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .Header {
+        height: 90vh;
+    }
+
+    .Title2 h1 {
+        font-size: 64px;
+    }
+
+    .Description p {
+        font-size: 20px;
+    }
+
+    .Buttons button {
+        width: 220px;
+        height: 55px;
+    }
+}

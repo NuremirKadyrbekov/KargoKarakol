@@ -1,0 +1,75 @@
+.Main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .ProfileCard {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  
+  .ProfilePicture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  h2, h3, p {
+    margin: 10px 0;
+  }
+  
+  .CopyIcon {
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  .Bio {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .SocialLinks {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .SocialLinks span {
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .ProductList {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .ProductList li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .UpgradeButton {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

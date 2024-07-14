@@ -11,7 +11,7 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
 const AdminRoute = ({ isAuthenticated, children }) => {
   const isAdmin = localStorage.getItem('isAdmin') === 'true';
   if (!isAuthenticated || !isAdmin) {
-    return <Navigate to="/home" />;
+    return <Navigate to="/KargoKarakol" />;
   }
   return children;
 };

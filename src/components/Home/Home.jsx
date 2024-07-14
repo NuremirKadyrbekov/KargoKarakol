@@ -3,7 +3,6 @@ import Css from './Home.module.css';
 import { FaFacebookF, FaTwitter, FaInstagram, FaBars } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
 import Logo from '../../assets/logo.png';
-import { FaBasketShopping } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 
@@ -33,7 +32,7 @@ function Home() {
           <li>БАЙЛАНЫШ</li>
         </ul>
         {/* <Link className={Css.LinkToUserPage} to={'/UserPage'}><span className={Css.Basket}><FaUserCircle /></span></Link> */}
-        <Link className={Css.LinkToUserPage} to={'/KargoKarakol/UserPage'}><FaUserCircle className={Css.Burger} /></Link>
+        <Link className={Css.LinkToUserPage} to={'/userpage'}><FaUserCircle className={Css.Burger} /></Link>
       </div>
       <div className={Css.Header}>
         <div className={Css.HeaderShadow}></div>
@@ -52,7 +51,7 @@ function Home() {
         </div>
         <div className={Css.Buttons}>
           <Link> <button className={Css.Btn1}>БАЙЛАНЫШУУ</button></Link>
-          <Link to={'/UserPage'}><button className={Css.Btn2}>ЖЕКЕ БЕТ</button></Link>
+          <Link to={'/userpage'}><button className={Css.Btn2}>ЖЕКЕ БЕТ</button></Link>
         </div>
       </div>
     </div>

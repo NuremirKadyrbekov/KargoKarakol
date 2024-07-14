@@ -153,6 +153,7 @@ import { auth, db } from '../../firebase';
 import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 import Css from './UserPage.module.css';
+import { Link } from 'react-router-dom';
 
 function UserPage() {
   const [products, setProducts] = useState([]);
@@ -194,6 +195,7 @@ function UserPage() {
 
   return (
     <div className={Css.Main}>
+      <Link to={'/admin'}>GO</Link>
       <div className={Css.ProfileCard}>
         <img className={Css.ProfilePicture} src="https://via.placeholder.com/150" alt="Profile" />
         <h2>{profile.cargoCode}</h2>

@@ -28,9 +28,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/KargoKarakol" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
         <Route
-          path="/KargoKarakol/Home"
+          path="/home"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Home />
@@ -38,7 +38,7 @@ const App = () => {
           }
         />
         <Route
-          path="/KargoKarakol/UserPage"
+          path="/userpage"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <UserPage />
@@ -46,7 +46,7 @@ const App = () => {
           }
         />
         <Route
-          path="/KargoKarakol/admin"
+          path="/admin"
           element={
             <AdminRoute isAuthenticated={isAuthenticated}>
               <AdminPanel />

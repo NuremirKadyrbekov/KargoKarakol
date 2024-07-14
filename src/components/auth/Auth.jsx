@@ -184,9 +184,9 @@ function Auth({ setIsAuthenticated }) {
       localStorage.setItem('isAdmin', isAdmin.toString()); // Сохраняем статус администратора в LocalStorage
   
       if (isAdmin) {
-        navigate('/KargoKarakol/admin');
+        navigate('/admin');
       } else {
-        navigate('/KargoKarakol/UserPage');
+        navigate('/userpage');
       }
     } catch (error) {
       console.log(error);

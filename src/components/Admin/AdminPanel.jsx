@@ -353,18 +353,17 @@
 
 
 
-
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import React, { useState, useEffect } from 'react';
 import { auth, db } from '../../firebase';
 import { collection, addDoc, query, where, getDocs, setDoc, doc, getDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 const AdminPanel = () => {
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState();
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false); // Установим начальное значение false
   const [newUserCargoCode, setNewUserCargoCode] = useState('');
   const [newUserPassword, setNewUserPassword] = useState('');
-  const [newUserRole, setNewUserRole] = useState('user'); // Новое состояние для роли
+  const [newUserRole, setNewUserRole] = useState('user');
   const [userCargoCode, setUserCargoCode] = useState('');
   const [productName, setProductName] = useState('');
   const [users, setUsers] = useState([]);
@@ -373,24 +372,35 @@ const AdminPanel = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAdmin = async () => {
-      const user = auth.currentUser;
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log('Auth state changed. Current user:', user);
       if (user) {
-        const userDocRef = doc(db, 'users', user.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists() && userDoc.data().role === 'admin') {
-          setIsAdminAuthenticated(true);
-          localStorage.setItem('isAdmin', 'true'); // Обновляем LocalStorage для консистентности
-        } else {
-          navigate('/KargoKarakol/admin');
-        }
+        checkAdmin(user);
       } else {
-        navigate('/KargoKarakol/admin');
+        navigate('/admin');
       }
-    };
-  
-    checkAdmin();
+    });
+
+    return () => unsubscribe();
   }, [navigate]);
+
+  const checkAdmin = async (user) => {
+    console.log('Checking admin for user:', user);
+    try {
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDoc = await getDoc(userDocRef);
+      console.log('User document:', userDoc.data());
+      if (userDoc.exists() && userDoc.data().role === 'admin') {
+        setIsAdminAuthenticated(true);
+        localStorage.setItem('isAdmin', 'true');
+      } else {
+        navigate('/admin');
+      }
+    } catch (error) {
+      console.error('Ошибка при проверке роли администратора:', error);
+      navigate('/admin');
+    }
+  };
 
   useEffect(() => {
     if (isAdminAuthenticated) {
@@ -424,15 +434,15 @@ const AdminPanel = () => {
       await setDoc(doc(db, 'users', newUserCargoCode), {
         cargoCode: newUserCargoCode,
         uid: userCredential.user.uid,
-        role: newUserRole, // Сохранение роли в документе пользователя
+        role: newUserRole,
       });
       setNewUserCargoCode('');
       setNewUserPassword('');
-      setNewUserRole('user'); // Сброс роли после создания пользователя
+      setNewUserRole('user');
       setError('');
       fetchUsersAndProducts();
     } catch (error) {
-      console.error('Ошибка при создании пользователя: ', error);
+      console.error('Ошибка при создании пользователя:', error);
       setError('Ошибка при создании пользователя.');
     }
   };
@@ -461,7 +471,7 @@ const AdminPanel = () => {
       setError('');
       fetchUsersAndProducts();
     } catch (error) {
-      console.error('Ошибка при добавлении продукта: ', error);
+      console.error('Ошибка при добавлении продукта:', error);
       setError('Ошибка при добавлении продукта.');
     }
   };
@@ -542,3 +552,4 @@ const AdminPanel = () => {
 };
 
 export default AdminPanel;
+

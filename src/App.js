@@ -26,7 +26,7 @@ const App = () => {
   }
 
   return (
-    <Router>
+    <Router basename='KargoKarakol'>
       <Routes>
         <Route path="/" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
         <Route

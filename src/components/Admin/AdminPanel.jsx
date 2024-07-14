@@ -476,7 +476,7 @@ const AdminPanel = () => {
     }
   };
 
-  if (!isAdminAuthenticated) {
+  if (isAdminAuthenticated) {
     return <div>Loading...</div>;
   }
 

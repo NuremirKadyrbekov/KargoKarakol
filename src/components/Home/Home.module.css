@@ -8,8 +8,7 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -26,6 +25,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     background-color: #f0f0f0;
+    width: 100%;
 }
 
 .HeaderCap {
@@ -35,7 +35,7 @@ body::-webkit-scrollbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 10px;
     color: white;
     font-family: "Unbounded", sans-serif;
     font-weight: 200;
@@ -44,15 +44,11 @@ body::-webkit-scrollbar {
 
 .HeaderCapContact {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
+    gap: 10px;
 }
 
 .SocialIcons {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     gap: 10px;
     font-size: 15px;
 }
@@ -62,36 +58,46 @@ body::-webkit-scrollbar {
     height: 60px;
     background-color: white;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 40px;
+    position: relative;
 }
 
 .Logo {
-    width: 150px;
+    width: 200px;
     height: auto;
 }
 
-.HeaderNavBar ul {
+.NavLinks {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     list-style: none;
     padding: 0;
     margin: 0;
+    
 }
 
-.HeaderNavBar ul li {
+.Burger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.NavLinks li {
     font-family: "Unbounded", sans-serif;
     font-weight: 600;
     color: rgb(0, 0, 0);
     transition: color 300ms;
 }
 
-.HeaderNavBar ul li:hover {
+.NavLinks li:hover {
     cursor: pointer;
     color: rgb(255, 2, 116);
 }
-
+.Open{
+    display: block;
+}
 .Basket {
     font-size: 20px;
     transition: color 300ms;
@@ -118,14 +124,13 @@ body::-webkit-scrollbar {
 }
 
 .Title {
-    margin-top: 100px;
+    margin-top: 80px;
     z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
     text-align: center;
-    
 }
 
 .Title1 {
@@ -133,39 +138,39 @@ body::-webkit-scrollbar {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
-
+    font-size: 12px;
+    font-family: "Unbounded", sans-serif;
 }
 .Title1 h1{
-    font-family: "Unbounded", sans-serif;
+    font-size: 12px;
     font-weight: 200;
-    font-size: 15px;
+    
 }
 
 .Linear {
-    width: 50px;
+    width: 60px;
     border-top: 1px solid white;
 }
 
 .Title2 h1 {
-    font-size: 40px;
+    font-size: 36px;
     margin-top: 20px;
     font-weight: 400;
     font-family: "Unbounded", sans-serif;
+    font-weight: 400;
 }
 
 .Description {
     width: 80%;
     max-width: 600px;
     margin-top: 20px;
-    
 }
 
 .Description p {
-    font-size: 10px;
+    font-size: 14px;
     font-weight: 100;
     font-family: "Unbounded", sans-serif;
-
+    font-weight: 200;
 }
 
 .Buttons {
@@ -173,16 +178,19 @@ body::-webkit-scrollbar {
     display: flex;
     gap: 10px;
     z-index: 1;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .Buttons button {
-    width: 150px;
+    width: 140px;
     height: 40px;
     outline: none;
     cursor: pointer;
     font-family: "Unbounded", sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
+    margin: 5px;
 }
 
 .Btn1 {
@@ -211,18 +219,43 @@ body::-webkit-scrollbar {
     border: 1px solid rgb(255, 2, 32);
 }
 
-@media (min-width: 576px) {
-    .HeaderCapContact,
-    .SocialIcons {
-        gap: 20px;
+@media (max-width: 768px) {
+    .NavLinks {
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
     }
 
-    .HeaderNavBar ul {
-        gap: 30px;
+    .NavLinks.Open {
+        max-height: 200px; /* Adjust this value based on the number of menu items */
+    }
+
+    .Burger {
+        display: block;
     }
 
     .Basket {
-        font-size: 24px;
+        display: none;
+    }
+}
+
+@media (min-width: 576px) {
+    .HeaderCapContact, .SocialIcons {
+        gap: 15px;
+    }
+
+    .HeaderNavBar ul {
+        gap: 20px;
+    }
+
+    .Basket {
+        font-size: 22px;
     }
 }
 
@@ -232,11 +265,11 @@ body::-webkit-scrollbar {
     }
 
     .Title1 {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .Title2 h1 {
-        font-size: 48px;
+        font-size: 42px;
     }
 
     .Description p {
@@ -244,7 +277,7 @@ body::-webkit-scrollbar {
     }
 
     .Buttons button {
-        width: 180px;
+        width: 160px;
         height: 45px;
     }
 }
@@ -255,7 +288,7 @@ body::-webkit-scrollbar {
     }
 
     .Title2 h1 {
-        font-size: 56px;
+        font-size: 48px;
     }
 
     .Description p {
@@ -263,7 +296,7 @@ body::-webkit-scrollbar {
     }
 
     .Buttons button {
-        width: 200px;
+        width: 180px;
         height: 50px;
     }
 }
@@ -274,7 +307,7 @@ body::-webkit-scrollbar {
     }
 
     .Title2 h1 {
-        font-size: 64px;
+        font-size: 54px;
     }
 
     .Description p {
@@ -282,7 +315,7 @@ body::-webkit-scrollbar {
     }
 
     .Buttons button {
-        width: 220px;
+        width: 200px;
         height: 55px;
     }
 }

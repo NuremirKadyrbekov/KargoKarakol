@@ -1,15 +1,18 @@
-import React from 'react'
-import Css from './Home.module.css'
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import React, { useState } from 'react';
+import Css from './Home.module.css';
+import { FaFacebookF, FaTwitter, FaInstagram, FaBars } from "react-icons/fa";
 import { IoLogoWhatsapp } from "react-icons/io";
-import { FaInstagram } from "react-icons/fa";
-import Logo from '../../assets/logo.png'
+import Logo from '../../assets/logo.png';
 import { FaBasketShopping } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 
-
 function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className={Css.Main}>
       <div className={Css.HeaderCap}>
@@ -26,13 +29,13 @@ function Home() {
       </div>
       <div className={Css.HeaderNavBar}>
         <img src={Logo} className={Css.Logo} alt="" />
-        <ul>
+        <ul className={isMenuOpen ? `${Css.NavLinks} ${Css.Open}` : Css.NavLinks}>
           <li>БАШКЫ</li>
           <li>ТОВАРЛАР</li>
           <li>БАЙЛАНЫШ</li>
-
         </ul>
         <span className={Css.Basket}><FaBasketShopping /></span>
+        <FaBars className={Css.Burger} onClick={toggleMenu} />
       </div>
       <div className={Css.Header}>
         <div className={Css.HeaderShadow}></div>
@@ -52,13 +55,10 @@ function Home() {
         <div className={Css.Buttons}>
           <Link> <button className={Css.Btn1}>БАЙЛАНЫШУУ</button></Link>
           <Link to={'/UserPage'}><button className={Css.Btn2}>ЖЕКЕ БЕТ</button></Link>
-
         </div>
-
-
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

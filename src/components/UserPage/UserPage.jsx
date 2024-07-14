@@ -195,7 +195,7 @@ function UserPage() {
 
   return (
     <div className={Css.Main}>
-      <Link to={'/admin'}>GO</Link>
+      <Link to={'/home'}>GO</Link>
       <div className={Css.ProfileCard}>
         <img className={Css.ProfilePicture} src="https://via.placeholder.com/150" alt="Profile" />
         <h2>{profile.cargoCode}</h2>

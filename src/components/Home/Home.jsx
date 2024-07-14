@@ -33,7 +33,7 @@ function Home() {
           <li>БАЙЛАНЫШ</li>
         </ul>
         {/* <Link className={Css.LinkToUserPage} to={'/UserPage'}><span className={Css.Basket}><FaUserCircle /></span></Link> */}
-        <Link className={Css.LinkToUserPage} to={'/UserPage'}><FaUserCircle className={Css.Burger} /></Link>
+        <Link className={Css.LinkToUserPage} to={'/KargoKarakol/UserPage'}><FaUserCircle className={Css.Burger} /></Link>
       </div>
       <div className={Css.Header}>
         <div className={Css.HeaderShadow}></div>

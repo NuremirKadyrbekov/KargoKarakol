@@ -30,7 +30,7 @@ const App = () => {
       <Routes>
         <Route path="/KargoKarakol" element={<Auth setIsAuthenticated={setIsAuthenticated} />} />
         <Route
-          path="/Home"
+          path="/KargoKarakol/Home"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <Home />
@@ -38,7 +38,7 @@ const App = () => {
           }
         />
         <Route
-          path="/UserPage"
+          path="/KargoKarakol/UserPage"
           element={
             <ProtectedRoute isAuthenticated={isAuthenticated}>
               <UserPage />
@@ -46,7 +46,7 @@ const App = () => {
           }
         />
         <Route
-          path="/admin"
+          path="/KargoKarakol/admin"
           element={
             <AdminRoute isAuthenticated={isAuthenticated}>
               <AdminPanel />

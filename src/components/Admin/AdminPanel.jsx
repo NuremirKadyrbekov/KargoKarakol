@@ -382,10 +382,10 @@ const AdminPanel = () => {
           setIsAdminAuthenticated(true);
           localStorage.setItem('isAdmin', 'true'); // Обновляем LocalStorage для консистентности
         } else {
-          navigate('/admin');
+          navigate('/KargoKarakol/admin');
         }
       } else {
-        navigate('/admin');
+        navigate('/KargoKarakol/admin');
       }
     };
   

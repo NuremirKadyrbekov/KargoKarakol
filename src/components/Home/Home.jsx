@@ -5,13 +5,11 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import Logo from '../../assets/logo.png';
 import { FaBasketShopping } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from "react-icons/fa";
 
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   return (
     <div className={Css.Main}>
@@ -29,13 +27,13 @@ function Home() {
       </div>
       <div className={Css.HeaderNavBar}>
         <img src={Logo} className={Css.Logo} alt="" />
-        <ul className={isMenuOpen ? `${Css.NavLinks} ${Css.Open}` : Css.NavLinks}>
+        <ul className={Css.NavLinks}>
           <li>БАШКЫ</li>
           <li>ТОВАРЛАР</li>
           <li>БАЙЛАНЫШ</li>
         </ul>
-        <span className={Css.Basket}><FaBasketShopping /></span>
-        <FaBars className={Css.Burger} onClick={toggleMenu} />
+        {/* <Link className={Css.LinkToUserPage} to={'/UserPage'}><span className={Css.Basket}><FaUserCircle /></span></Link> */}
+        <Link className={Css.LinkToUserPage} to={'/UserPage'}><FaUserCircle className={Css.Burger} /></Link>
       </div>
       <div className={Css.Header}>
         <div className={Css.HeaderShadow}></div>

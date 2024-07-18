@@ -50,10 +50,18 @@ function UserPage() {
 
   return (
     <div className={Css.Main}>
-      <Link to={'/home'}>GO</Link>
       <div className={Css.ProfileCard}>
-        <img className={Css.ProfilePicture} src="https://via.placeholder.com/150" alt="Profile" />
-        <h2>{profile.cargoCode}</h2>
+        <div className={Css.ProfileContainer}>
+          <div className={Css.Img}>
+            <img className={Css.ProfilePicture} src="https://via.placeholder.com/150" alt="Profile" />
+          </div>
+          <div className={Css.Name}>
+            <h1>Nuremir</h1>
+            <h2>{profile.phone}</h2>
+            <h2>{profile.cargoCode}</h2>
+
+          </div>
+        </div>
         <h3>@{profile.uid}</h3>
         <h3>@{profile.phone}</h3>
         <button>Edit Profile</button>

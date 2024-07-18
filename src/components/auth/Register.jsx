@@ -561,6 +561,7 @@ const Register = () => {
         role: 'user',
         name:name,
         lastName:last_name,
+        password:password,  
       });
 
       // Установка карго кода в state для отображения на экране

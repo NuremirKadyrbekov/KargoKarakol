@@ -54,6 +54,7 @@ function Home() {
           <Link to={'/userpage'}><button className={Css.Btn2}>ЖЕКЕ БЕТ</button></Link>
         </div>
       </div>
+        
     </div>
   );
 }

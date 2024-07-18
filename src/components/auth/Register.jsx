@@ -1,500 +1,502 @@
-// // import React, { useState } from 'react';
-// // import { createUserWithEmailAndPassword } from 'firebase/auth';
-// // import { auth, db } from '../../firebase';
-// // import { collection, addDoc, getDocs } from 'firebase/firestore';
-// // import { useNavigate } from 'react-router-dom';
-// // import Css from './register.module.css';
-
-// // const Register = () => {
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [phone, setPhone] = useState('');
-// //   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
-// //   const [error, setError] = useState('');
-// //   const navigate = useNavigate();
-
-// //   const handleRegister = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       // Получение последнего карго-кода и определение нового
-// //       const usersSnapshot = await getDocs(collection(db, 'users'));
-// //       const lastCargoCode = usersSnapshot.docs.length;
-// //       const newCargoCode = lastCargoCode + 1;
-
-// //       // Регистрация пользователя с использованием электронной почты и пароля
-// //       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-// //       const user = userCredential.user;
-
-// //       // Добавление пользователя в Firestore
-// //       await addDoc(collection(db, 'users'), {
-// //         cargoCode: newCargoCode.toString(),
-// //         uid: user.uid,
-// //         email: email,
-// //         phone: phone,
-// //         role: 'user',
-// //       });
-
-// //       // Установка карго кода в state для отображения на экране
-// //       setCargoCode(newCargoCode.toString());
-
-// //       setEmail('');
-// //       setPassword('');
-// //       setPhone('');
-// //       setError('');
-
-// //       // Задержка перед перенаправлением на главную страницу
-// //       setTimeout(() => {
-// //         navigate('/');
-// //       }, 5000); // Задержка на 5 секунд
-
-// //     } catch (error) {
-// //       console.error('Ошибка при регистрации пользователя:', error);
-// //       setError('Ошибка при регистрации пользователя.');
-// //     }
-// //   };
-
-// //   return (
-// //     <div className={Css.Main}>
-// //       <form onSubmit={handleRegister}>
-// //         <input
-// //           type="email"
-// //           value={email}
-// //           placeholder="Email"
-// //           onChange={(e) => setEmail(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="password"
-// //           value={password}
-// //           placeholder="Password"
-// //           onChange={(e) => setPassword(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="text"
-// //           value={phone}
-// //           placeholder="Phone"
-// //           onChange={(e) => setPhone(e.target.value)}
-// //         />
-// //         <button type="submit">Register</button>
-// //       </form>
-// //       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
-// //       {error && <p style={{ color: 'red' }}>{error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default Register;
-
-// // import React, { useState } from 'react';
-// // import { createUserWithEmailAndPassword } from 'firebase/auth';
-// // import { auth, db } from '../../firebase';
-// // import { collection, addDoc, getDocs } from 'firebase/firestore';
-// // import { useNavigate } from 'react-router-dom';
-// // import Css from './register.module.css';
-
-// // const Register = () => {
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [phone, setPhone] = useState('');
-// //   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
-// //   const [error, setError] = useState('');
-// //   const navigate = useNavigate();
-
-// //   const handleRegister = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       // Получение последнего карго-кода и определение нового
-// //       const usersSnapshot = await getDocs(collection(db, 'users'));
-// //       const lastCargoCode = usersSnapshot.docs.length;
-// //       const newCargoCode = lastCargoCode + 1;
-
-// //       // Формирование email из номера телефона
-// //       const phoneEmail = `${phone}@example.com`;
-
-// //       // Регистрация пользователя с использованием электронной почты и пароля
-// //       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
-// //       const user = userCredential.user;
-
-// //       // Добавление пользователя в Firestore
-// //       await addDoc(collection(db, 'users'), {
-// //         cargoCode: newCargoCode.toString(),
-// //         uid: user.uid,
-// //         email: phoneEmail,
-// //         phone: phone,
-// //         role: 'user',
-// //       });
-
-// //       // Установка карго кода в state для отображения на экране
-// //       setCargoCode(newCargoCode.toString());
-
-// //       setEmail('');
-// //       setPassword('');
-// //       setPhone('');
-// //       setError('');
-
-// //       // Задержка перед перенаправлением на главную страницу
-// //       setTimeout(() => {
-// //         navigate('/');
-// //       }, 5000); // Задержка на 5 секунд
-
-// //     } catch (error) {
-// //       console.error('Ошибка при регистрации пользователя:', error);
-// //       setError('Ошибка при регистрации пользователя.');
-// //     }
-// //   };
-
-// //   return (
-// //     <div className={Css.Main}>
-// //       <form onSubmit={handleRegister}>
-// //         <input
-// //           type="email"
-// //           value={email}
-// //           placeholder="Email"
-// //           onChange={(e) => setEmail(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="password"
-// //           value={password}
-// //           placeholder="Password"
-// //           onChange={(e) => setPassword(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="text"
-// //           value={phone}
-// //           placeholder="Phone"
-// //           onChange={(e) => setPhone(e.target.value)}
-// //           required
-// //         />
-// //         <button type="submit">Register</button>
-// //       </form>
-// //       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
-// //       {error && <p style={{ color: 'red' }}>{error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default Register;
-
-
-
-// // import React, { useState } from 'react';
-// // import { createUserWithEmailAndPassword } from 'firebase/auth';
-// // import { auth, db } from '../../firebase';
-// // import { collection, addDoc, getDocs } from 'firebase/firestore';
-// // import { useNavigate } from 'react-router-dom';
-// // import Css from './register.module.css';
-
-// // const Register = () => {
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [phone, setPhone] = useState('');
-// //   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
-// //   const [error, setError] = useState('');
-// //   const navigate = useNavigate();
-
-// //   const handleRegister = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       // Получение последнего карго-кода и определение нового
-// //       const usersSnapshot = await getDocs(collection(db, 'users'));
-// //       const lastCargoCode = usersSnapshot.docs.length;
-// //       const newCargoCode = lastCargoCode + 1;
-
-// //       // Формирование email из номера телефона
-// //       const phoneEmail = `${phone}@example.com`;
-
-// //       // Регистрация пользователя с использованием электронной почты и пароля
-// //       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
-// //       const user = userCredential.user;
-
-// //       // Добавление пользователя в Firestore
-// //       await addDoc(collection(db, 'users'), {
-// //         cargoCode: newCargoCode.toString(),
-// //         uid: user.uid,
-// //         email: phoneEmail,
-// //         phone: phone,
-// //         role: 'user',
-// //       });
-
-// //       // Установка карго кода в state для отображения на экране
-// //       setCargoCode(newCargoCode.toString());
-
-// //       setEmail('');
-// //       setPassword('');
-// //       setPhone('');
-// //       setError('');
-
-// //       // Задержка перед перенаправлением на главную страницу
-// //       setTimeout(() => {
-// //         navigate('/');
-// //       }, 5000); // Задержка на 5 секунд
-
-// //     } catch (error) {
-// //       console.error('Ошибка при регистрации пользователя:', error);
-// //       setError('Ошибка при регистрации пользователя.');
-// //     }
-// //   };
-
-// //   return (
-// //     <div className={Css.Main}>
-// //       <form onSubmit={handleRegister}>
-// //         <input
-// //           type="email"
-// //           value={email}
-// //           placeholder="Email"
-// //           onChange={(e) => setEmail(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="password"
-// //           value={password}
-// //           placeholder="Password"
-// //           onChange={(e) => setPassword(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="text"
-// //           value={phone}
-// //           placeholder="Phone"
-// //           onChange={(e) => setPhone(e.target.value)}
-// //           required
-// //         />
-// //         <button type="submit">Register</button>
-// //       </form>
-// //       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
-// //       {error && <p style={{ color: 'red' }}>{error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default Register;
-
-
-// // import React, { useState, useEffect } from 'react';
-// // import { createUserWithEmailAndPassword } from 'firebase/auth';
-// // import { auth, db } from '../../firebase';
-// // import { collection, addDoc, getDocs } from 'firebase/firestore';
-// // import { useNavigate } from 'react-router-dom';
-// // import Css from './register.module.css';
-
-// // const Register = () => {
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [phone, setPhone] = useState('');
-// //   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
-// //   const [error, setError] = useState('');
-// //   const [lastCargoCode, setLastCargoCode] = useState(2000);
-// //   const navigate = useNavigate();
-
-// //   useEffect(() => {
-// //     const fetchLastCargoCode = async () => {
-// //       try {
-// //         const usersSnapshot = await getDocs(collection(db, 'users'));
-// //         let maxCargoCode = 2000; // Начальная точка отсчета
-// //         usersSnapshot.forEach((doc) => {
-// //           const userCargoCode = parseInt(doc.data().cargoCode, 10);
-// //           if (userCargoCode > maxCargoCode) {
-// //             maxCargoCode = userCargoCode;
-// //           }
-// //         });
-// //         setLastCargoCode(maxCargoCode);
-// //       } catch (error) {
-// //         console.error('Ошибка при получении последнего карго кода:', error);
-// //       }
-// //     };
-
-// //     fetchLastCargoCode();
-// //   }, []);
-
-// //   const handleRegister = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       // Получение нового карго кода
-// //       const newCargoCode = lastCargoCode + 1;
-
-// //       // Формирование email из номера телефона
-// //       const phoneEmail = `${phone}@example.com`;
-
-// //       // Регистрация пользователя с использованием электронной почты и пароля
-// //       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
-// //       const user = userCredential.user;
-
-// //       // Добавление пользователя в Firestore
-// //       await addDoc(collection(db, 'users'), {
-// //         cargoCode: newCargoCode.toString(),
-// //         uid: userCredential.user.uid,
-// //         email: phoneEmail,
-// //         phone: phone,
-// //         role: 'user',
-// //       });
-
-// //       // Установка карго кода в state для отображения на экране
-// //       setCargoCode(newCargoCode.toString());
-
-// //       setEmail('');
-// //       setPassword('');
-// //       setPhone('');
-// //       setError('');
-
-// //       // Задержка перед перенаправлением на главную страницу
-// //       setTimeout(() => {
-// //         navigate('/');
-// //       }, 5000); // Задержка на 5 секунд
-
-// //     } catch (error) {
-// //       console.error('Ошибка при регистрации пользователя:', error);
-// //       setError('Ошибка при регистрации пользователя.');
-// //     }
-// //   };
-
-// //   return (
-// //     <div className={Css.Main}>
-// //       <form onSubmit={handleRegister}>
-// //         <input
-// //           type="email"
-// //           value={email}
-// //           placeholder="Email"
-// //           onChange={(e) => setEmail(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="password"
-// //           value={password}
-// //           placeholder="Password"
-// //           onChange={(e) => setPassword(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="text"
-// //           value={phone}
-// //           placeholder="Phone"
-// //           onChange={(e) => setPhone(e.target.value)}
-// //           required
-// //         />
-// //         <button type="submit">Register</button>
-// //       </form>
-// //       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
-// //       {error && <p style={{ color: 'red' }}>{error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default Register;
-
-
-// // import React, { useState, useEffect } from 'react';
-// // import { createUserWithEmailAndPassword } from 'firebase/auth';
-// // import { auth, db } from '../../firebase';
-// // import { doc, setDoc, getDocs, collection } from 'firebase/firestore';
-// // import { useNavigate } from 'react-router-dom';
-// // import Css from './register.module.css';
-
-// // const Register = () => {
-// //   const [email, setEmail] = useState('');
-// //   const [password, setPassword] = useState('');
-// //   const [phone, setPhone] = useState('');
-// //   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
-// //   const [error, setError] = useState('');
-// //   const [lastCargoCode, setLastCargoCode] = useState(2000);
-// //   const navigate = useNavigate();
-
-// //   useEffect(() => {
-// //     const fetchLastCargoCode = async () => {
-// //       try {
-// //         const usersSnapshot = await getDocs(collection(db, 'users'));
-// //         let maxCargoCode = 2000; // Начальная точка отсчета
-// //         usersSnapshot.forEach((doc) => {
-// //           const userCargoCode = parseInt(doc.data().cargoCode, 10);
-// //           if (userCargoCode > maxCargoCode) {
-// //             maxCargoCode = userCargoCode;
-// //           }
-// //         });
-// //         setLastCargoCode(maxCargoCode);
-// //       } catch (error) {
-// //         console.error('Ошибка при получении последнего карго кода:', error);
-// //       }
-// //     };
-
-// //     fetchLastCargoCode();
-// //   }, []);
-
-// //   const handleRegister = async (e) => {
-// //     e.preventDefault();
-// //     try {
-// //       // Получение нового карго кода
-// //       const newCargoCode = lastCargoCode + 1;
-
-// //       // Формирование email из номера телефона
-// //       const phoneEmail = `${phone}@example.com`;
-
-// //       // Регистрация пользователя с использованием электронной почты и пароля
-// //       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
-// //       const user = userCredential.user;
-
-// //       // Добавление пользователя в Firestore с использованием UID
-// //       await setDoc(doc(db, 'users', user.uid), {
-// //         cargoCode: newCargoCode.toString(),
-// //         uid: user.uid,
-// //         email: phoneEmail,
-// //         phone: phone,
-// //         role: 'user',
-// //       });
-
-// //       // Установка карго кода в state для отображения на экране
-// //       setCargoCode(newCargoCode.toString());
-
-// //       setEmail('');
-// //       setPassword('');
-// //       setPhone('');
-// //       setError('');
-
-// //       // Задержка перед перенаправлением на главную страницу
-// //       setTimeout(() => {
-// //         navigate('/');
-// //       }, 5000); // Задержка на 5 секунд
-
-// //     } catch (error) {
-// //       console.error('Ошибка при регистрации пользователя:', error);
-// //       setError('Ошибка при регистрации пользователя.');
-// //     }
-// //   };
-
-// //   return (
-// //     <div className={Css.Main}>
-// //       <form onSubmit={handleRegister}>
-// //         <input
-// //           type="email"
-// //           value={email}
-// //           placeholder="Email"
-// //           onChange={(e) => setEmail(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="password"
-// //           value={password}
-// //           placeholder="Password"
-// //           onChange={(e) => setPassword(e.target.value)}
-// //           required
-// //         />
-// //         <input
-// //           type="text"
-// //           value={phone}
-// //           placeholder="Phone"
-// //           onChange={(e) => setPhone(e.target.value)}
-// //           required
-// //         />
-// //         <button type="submit">Register</button>
-// //       </form>
-// //       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
-// //       {error && <p style={{ color: 'red' }}>{error}</p>}
-// //     </div>
-// //   );
-// // };
-
-// // export default Register;
+// import React, { useState } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth, db } from '../../firebase';
+// import { collection, addDoc, getDocs } from 'firebase/firestore';
+// import { useNavigate } from 'react-router-dom';
+// import Css from './register.module.css';
+
+// const Register = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
+//   const [error, setError] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       // Получение последнего карго-кода и определение нового
+//       const usersSnapshot = await getDocs(collection(db, 'users'));
+//       const lastCargoCode = usersSnapshot.docs.length;
+//       const newCargoCode = lastCargoCode + 1;
+
+//       // Регистрация пользователя с использованием электронной почты и пароля
+//       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+//       const user = userCredential.user;
+
+//       // Добавление пользователя в Firestore
+//       await addDoc(collection(db, 'users'), {
+//         cargoCode: newCargoCode.toString(),
+//         uid: user.uid,
+//         email: email,
+//         phone: phone,
+//         role: 'user',
+//       });
+
+//       // Установка карго кода в state для отображения на экране
+//       setCargoCode(newCargoCode.toString());
+
+//       setEmail('');
+//       setPassword('');
+//       setPhone('');
+//       setError('');
+
+//       // Задержка перед перенаправлением на главную страницу
+//       setTimeout(() => {
+//         navigate('/');
+//       }, 5000); // Задержка на 5 секунд
+
+//     } catch (error) {
+//       console.error('Ошибка при регистрации пользователя:', error);
+//       setError('Ошибка при регистрации пользователя.');
+//     }
+//   };
+
+//   return (
+//     <div className={Css.Main}>
+//       <form onSubmit={handleRegister}>
+//         <input
+//           type="email"
+//           value={email}
+//           placeholder="Email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           placeholder="Password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="text"
+//           value={phone}
+//           placeholder="Phone"
+//           onChange={(e) => setPhone(e.target.value)}
+//         />
+//         <button type="submit">Register</button>
+//       </form>
+//       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+// import React, { useState } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth, db } from '../../firebase';
+// import { collection, addDoc, getDocs } from 'firebase/firestore';
+// import { useNavigate } from 'react-router-dom';
+// import Css from './register.module.css';
+
+// const Register = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
+//   const [error, setError] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       // Получение последнего карго-кода и определение нового
+//       const usersSnapshot = await getDocs(collection(db, 'users'));
+//       const lastCargoCode = usersSnapshot.docs.length;
+//       const newCargoCode = lastCargoCode + 1;
+
+//       // Формирование email из номера телефона
+//       const phoneEmail = `${phone}@example.com`;
+
+//       // Регистрация пользователя с использованием электронной почты и пароля
+//       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
+//       const user = userCredential.user;
+
+//       // Добавление пользователя в Firestore
+//       await addDoc(collection(db, 'users'), {
+//         cargoCode: newCargoCode.toString(),
+//         uid: user.uid,
+//         email: phoneEmail,
+//         phone: phone,
+//         role: 'user',
+//       });
+
+//       // Установка карго кода в state для отображения на экране
+//       setCargoCode(newCargoCode.toString());
+
+//       setEmail('');
+//       setPassword('');
+//       setPhone('');
+//       setError('');
+
+//       // Задержка перед перенаправлением на главную страницу
+//       setTimeout(() => {
+//         navigate('/');
+//       }, 5000); // Задержка на 5 секунд
+
+//     } catch (error) {
+//       console.error('Ошибка при регистрации пользователя:', error);
+//       setError('Ошибка при регистрации пользователя.');
+//     }
+//   };
+
+//   return (
+//     <div className={Css.Main}>
+//       <form onSubmit={handleRegister}>
+//         <input
+//           type="email"
+//           value={email}
+//           placeholder="Email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           placeholder="Password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="text"
+//           value={phone}
+//           placeholder="Phone"
+//           onChange={(e) => setPhone(e.target.value)}
+//           required
+//         />
+//         <button type="submit">Register</button>
+//       </form>
+//       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+
+
+// import React, { useState } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth, db } from '../../firebase';
+// import { collection, addDoc, getDocs } from 'firebase/firestore';
+// import { useNavigate } from 'react-router-dom';
+// import Css from './register.module.css';
+
+// const Register = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
+//   const [error, setError] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       // Получение последнего карго-кода и определение нового
+//       const usersSnapshot = await getDocs(collection(db, 'users'));
+//       const lastCargoCode = usersSnapshot.docs.length;
+//       const newCargoCode = lastCargoCode + 1;
+
+//       // Формирование email из номера телефона
+//       const phoneEmail = `${phone}@example.com`;
+
+//       // Регистрация пользователя с использованием электронной почты и пароля
+//       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
+//       const user = userCredential.user;
+
+//       // Добавление пользователя в Firestore
+//       await addDoc(collection(db, 'users'), {
+//         cargoCode: newCargoCode.toString(),
+//         uid: user.uid,
+//         email: phoneEmail,
+//         phone: phone,
+//         role: 'user',
+//       });
+
+//       // Установка карго кода в state для отображения на экране
+//       setCargoCode(newCargoCode.toString());
+
+//       setEmail('');
+//       setPassword('');
+//       setPhone('');
+//       setError('');
+
+//       // Задержка перед перенаправлением на главную страницу
+//       setTimeout(() => {
+//         navigate('/');
+//       }, 5000); // Задержка на 5 секунд
+
+//     } catch (error) {
+//       console.error('Ошибка при регистрации пользователя:', error);
+//       setError('Ошибка при регистрации пользователя.');
+//     }
+//   };
+
+//   return (
+//     <div className={Css.Main}>
+//       <form onSubmit={handleRegister}>
+//         <input
+//           type="email"
+//           value={email}
+//           placeholder="Email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           placeholder="Password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="text"
+//           value={phone}
+//           placeholder="Phone"
+//           onChange={(e) => setPhone(e.target.value)}
+//           required
+//         />
+//         <button type="submit">Register</button>
+//       </form>
+//       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+
+// import React, { useState, useEffect } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth, db } from '../../firebase';
+// import { collection, addDoc, getDocs } from 'firebase/firestore';
+// import { useNavigate } from 'react-router-dom';
+// import Css from './register.module.css';
+
+// const Register = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
+//   const [error, setError] = useState('');
+//   const [lastCargoCode, setLastCargoCode] = useState(2000);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchLastCargoCode = async () => {
+//       try {
+//         const usersSnapshot = await getDocs(collection(db, 'users'));
+//         let maxCargoCode = 2000; // Начальная точка отсчета
+//         usersSnapshot.forEach((doc) => {
+//           const userCargoCode = parseInt(doc.data().cargoCode, 10);
+//           if (userCargoCode > maxCargoCode) {
+//             maxCargoCode = userCargoCode;
+//           }
+//         });
+//         setLastCargoCode(maxCargoCode);
+//       } catch (error) {
+//         console.error('Ошибка при получении последнего карго кода:', error);
+//       }
+//     };
+
+//     fetchLastCargoCode();
+//   }, []);
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       // Получение нового карго кода
+//       const newCargoCode = lastCargoCode + 1;
+
+//       // Формирование email из номера телефона
+//       const phoneEmail = `${phone}@example.com`;
+
+//       // Регистрация пользователя с использованием электронной почты и пароля
+//       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
+//       const user = userCredential.user;
+
+//       // Добавление пользователя в Firestore
+//       await addDoc(collection(db, 'users'), {
+//         cargoCode: newCargoCode.toString(),
+//         uid: userCredential.user.uid,
+//         email: phoneEmail,
+//         phone: phone,
+//         role: 'user',
+//       });
+
+//       // Установка карго кода в state для отображения на экране
+//       setCargoCode(newCargoCode.toString());
+
+//       setEmail('');
+//       setPassword('');
+//       setPhone('');
+//       setError('');
+
+//       // Задержка перед перенаправлением на главную страницу
+//       setTimeout(() => {
+//         navigate('/');
+//       }, 5000); // Задержка на 5 секунд
+
+//     } catch (error) {
+//       console.error('Ошибка при регистрации пользователя:', error);
+//       setError('Ошибка при регистрации пользователя.');
+//     }
+//   };
+
+//   return (
+//     <div className={Css.Main}>
+//       <form onSubmit={handleRegister}>
+//         <input
+//           type="email"
+//           value={email}
+//           placeholder="Email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           placeholder="Password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="text"
+//           value={phone}
+//           placeholder="Phone"
+//           onChange={(e) => setPhone(e.target.value)}
+//           required
+//         />
+//         <button type="submit">Register</button>
+//       </form>
+//       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+
+// import React, { useState, useEffect } from 'react';
+// import { createUserWithEmailAndPassword } from 'firebase/auth';
+// import { auth, db } from '../../firebase';
+// import { doc, setDoc, getDocs, collection } from 'firebase/firestore';
+// import { useNavigate } from 'react-router-dom';
+// import Css from './register.module.css';
+
+// const Register = () => {
+//   const [email, setEmail] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [phone, setPhone] = useState('');
+//   const [cargoCode, setCargoCode] = useState(''); // State для хранения карго кода
+//   const [error, setError] = useState('');
+//   const [lastCargoCode, setLastCargoCode] = useState(2000);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchLastCargoCode = async () => {
+//       try {
+//         const usersSnapshot = await getDocs(collection(db, 'users'));
+//         let maxCargoCode = 2000; // Начальная точка отсчета
+//         usersSnapshot.forEach((doc) => {
+//           const userCargoCode = parseInt(doc.data().cargoCode, 10);
+//           if (userCargoCode > maxCargoCode) {
+//             maxCargoCode = userCargoCode;
+//           }
+//         });
+//         setLastCargoCode(maxCargoCode);
+//       } catch (error) {
+//         console.error('Ошибка при получении последнего карго кода:', error);
+//       }
+//     };
+
+//     fetchLastCargoCode();
+//   }, []);
+
+//   const handleRegister = async (e) => {
+//     e.preventDefault();
+//     try {
+//       // Получение нового карго кода
+//       const newCargoCode = lastCargoCode + 1;
+
+//       // Формирование email из номера телефона
+//       const phoneEmail = `${phone}@example.com`;
+
+//       // Регистрация пользователя с использованием электронной почты и пароля
+//       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
+//       const user = userCredential.user;
+
+//       // Добавление пользователя в Firestore с использованием UID
+//       await setDoc(doc(db, 'users', user.uid), {
+//         cargoCode: newCargoCode.toString(),
+//         uid: user.uid,
+//         email: phoneEmail,
+//         phone: phone,
+//         role: 'user',
+//       });
+
+//       // Установка карго кода в state для отображения на экране
+//       setCargoCode(newCargoCode.toString());
+
+//       setEmail('');
+//       setPassword('');
+//       setPhone('');
+//       setError('');
+
+//       // Задержка перед перенаправлением на главную страницу
+//       setTimeout(() => {
+//         navigate('/');
+//       }, 5000); // Задержка на 5 секунд
+
+//     } catch (error) {
+//       console.error('Ошибка при регистрации пользователя:', error);
+//       setError('Ошибка при регистрации пользователя.');
+//     }
+//   };
+
+//   return (
+//     <div className={Css.Main}>
+//       <form onSubmit={handleRegister}>
+//         <input
+//           type="email"
+//           value={email}
+//           placeholder="Email"
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="password"
+//           value={password}
+//           placeholder="Password"
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+//         <input
+//           type="text"
+//           value={phone}
+//           placeholder="Phone"
+//           onChange={(e) => setPhone(e.target.value)}
+//           required
+//         />
+//         <button type="submit">Register</button>
+//       </form>
+//       {cargoCode && <p>Карго код: {cargoCode}</p>} {/* Отображение карго кода */}
+//       {error && <p style={{ color: 'red' }}>{error}</p>}
+//     </div>
+//   );
+// };
+
+// export default Register;
+
+// ################ #33
 
 
 // import React, { useState, useEffect } from 'react';
@@ -664,7 +666,6 @@
 
 // export default Register;
 
-
 import React, { useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../../firebase';
@@ -685,31 +686,13 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchLastCargoCode = async () => {
-      try {
-        const usersSnapshot = await getDocs(collection(db, 'users'));
-        let maxCargoCode = 2000;
-        usersSnapshot.forEach((doc) => {
-          const userCargoCode = parseInt(doc.data().cargoCode, 10);
-          if (userCargoCode > maxCargoCode) {
-            maxCargoCode = userCargoCode;
-          }
-        });
-        setCargoCode(maxCargoCode + 1);
-      } catch (error) {
-        console.error('Ошибка при получении последнего карго кода:', error);
-      }
-    };
-
-    fetchLastCargoCode();
-  }, []);
-
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
+      // Формирование email из номера телефона
       const phoneEmail = `${phone}@example.com`;
 
+      // Регистрация пользователя с использованием электронной почты и пароля
       const userCredential = await createUserWithEmailAndPassword(auth, phoneEmail, password);
       const user = userCredential.user;
 

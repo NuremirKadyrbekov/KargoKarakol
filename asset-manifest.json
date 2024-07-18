@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/KargoKarakol/static/css/main.4a7c8154.css",
-    "main.js": "/KargoKarakol/static/js/main.7545b242.js",
+    "main.js": "/KargoKarakol/static/js/main.78dc4084.js",
     "static/media/bgcHeader.png": "/KargoKarakol/static/media/bgcHeader.95bf49787920b001cd94.png",
     "static/media/adaptiveBgc.jpg": "/KargoKarakol/static/media/adaptiveBgc.6dbd1bacdcb49e80fbfa.jpg",
     "static/media/bgcAuth.jpg": "/KargoKarakol/static/media/bgcAuth.c6fe1124f2badd292c1f.jpg",
@@ -10,10 +10,10 @@
     "static/media/loading2.svg": "/KargoKarakol/static/media/loading2.da7813efe8da90aecca351537a80f5ac.svg",
     "index.html": "/KargoKarakol/index.html",
     "main.4a7c8154.css.map": "/KargoKarakol/static/css/main.4a7c8154.css.map",
-    "main.7545b242.js.map": "/KargoKarakol/static/js/main.7545b242.js.map"
+    "main.78dc4084.js.map": "/KargoKarakol/static/js/main.78dc4084.js.map"
   },
   "entrypoints": [
     "static/css/main.4a7c8154.css",
-    "static/js/main.7545b242.js"
+    "static/js/main.78dc4084.js"
   ]
 }

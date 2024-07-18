@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../../assets/bgc2Auth.jpg');
+  background-image: url('../../assets/bgcAuth.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -66,7 +66,9 @@ body::-webkit-scrollbar {
 
 .AuthBlock h1 {
   z-index: 999;
+  /* width: 280px; */
   font-weight: 900;
+  font-size: 25px;
   color: rgb(49, 79, 87);
 }
 
@@ -101,6 +103,13 @@ body::-webkit-scrollbar {
   font-weight: 400;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: rgb(50, 113, 113);
+  transition: 300ms;
+
+}
+.AuthBlock form button:hover{
+  box-shadow: 9px 9px 30px rgba(63, 119, 96, 0.54), -9px -9px 33px rgba(63, 119, 96, 0.54);
+  transition: 300ms;
+  transform: translateY(-2px);
 }
 
 .newAccBtn{
@@ -124,6 +133,15 @@ body::-webkit-scrollbar {
   font-size: 13px;
   text-align: center;
   color: brown;
+}
+
+.Succes{
+  width: 80%;
+  text-align: center;
+}
+.cargoCode{
+  color: rgb(240, 95, 6);
+  font-size: 20px;
 }
 
 @media (min-width: 576px) {

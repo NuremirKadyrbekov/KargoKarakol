@@ -35,7 +35,7 @@ function Home() {
         <Link className={Css.LinkToUserPage} to={'/userpage'}><FaUserCircle className={Css.Burger} /></Link>
       </div>
       <div className={Css.Header}>
-        <div className={Css.HeaderShadow}></div>
+        {/* <div className={Css.HeaderShadow}></div> */}
         <div className={Css.Title}>
           <div className={Css.Title1}>
             <div className={Css.Linear}></div>

@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Auth from './components/auth/Auth';
 import UserPage from './components/UserPage/UserPage';
 import AdminPanel from './components/Admin/AdminPanel';
+import Register from './components/auth/Register'; // Импортируем компонент регистрации
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -53,6 +54,7 @@ const App = () => {
             </AdminRoute>
           }
         />
+        <Route path="/register" element={<Register />} /> {/* Новый маршрут регистрации */}
       </Routes>
     </Router>
   );

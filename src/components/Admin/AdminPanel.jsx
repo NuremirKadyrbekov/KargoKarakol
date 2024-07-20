@@ -40,7 +40,7 @@ const AdminPanel = () => {
       const userDocRef = doc(db, 'users', user.uid);
       const userDoc = await getDoc(userDocRef);
 
-      if (userDoc.exists() && userDoc.data().cargoCode === '2001') {
+      if (userDoc.exists() && userDoc.data().cargoCode === '0') {
         setIsAdminAuthenticated(true);
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('isAdmin', 'true');

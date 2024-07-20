@@ -330,7 +330,7 @@ function Auth({ setIsAuthenticated }) {
       }
 
       const userData = userDoc.data();
-      const isAdmin = userData.cargoCode === '2001'; // Админ с карго-кодом 2001
+      const isAdmin = userData.cargoCode === '0'; // Админ с карго-кодом 2001
 
       setPhone('');
       setPassword('');

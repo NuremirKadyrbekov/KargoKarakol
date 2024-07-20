@@ -6,6 +6,7 @@ import Logo from '../../assets/logo.png';
 import { Link } from 'react-router-dom';
 import { FaUserCircle } from "react-icons/fa";
 
+
 function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
